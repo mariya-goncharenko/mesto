@@ -33,8 +33,8 @@
     }
   }
 
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 360px) {
     .elements {
-      padding: 0 19px 0;
+      padding: 0 calc((360px - 282px)/2) 0;
     }
   }

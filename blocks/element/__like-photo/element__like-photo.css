@@ -1,0 +1,21 @@
+.element__like-photo {
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 19px;
+    background-image: url("../../../image/like.svg");
+    border: none;
+    background-color: transparent;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+  }
+  
+  .element__like-photo:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  .element__like-photo:active {
+    background-image: url("../../..image/like_act.svg");
+    opacity: 1;
+  }

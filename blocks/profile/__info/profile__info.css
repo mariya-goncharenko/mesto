@@ -1,0 +1,30 @@
+.profile__info {
+    margin: 0 244px 0 30px;
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+    "name button"
+    "subname subname";
+    row-gap: 16px;
+    column-gap: 18px;
+  }
+
+  @media screen and (max-width: 1270px) {
+    .profile__info {
+      margin: 0 100px 0 30px;
+    }
+  }
+
+  @media screen and (max-width: 1130px) {
+    .profile__info {
+      margin: 0 40px 0 20px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .profile__info {
+      margin: 26px 0 0 0;
+      row-gap: 6px;
+      column-gap: 10px;
+    }
+  }

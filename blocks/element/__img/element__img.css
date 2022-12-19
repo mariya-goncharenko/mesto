@@ -1,0 +1,9 @@
+.element__img {
+    margin: 0;
+    padding: 0;
+    max-width: 282px;
+    max-height: 282px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    display: block;
+  }

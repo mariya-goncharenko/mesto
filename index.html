@@ -26,15 +26,11 @@
 
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__subname">Исследователь океана</p>
-                <button class="edit-profile profile__edit-profile" type="button" >
-                    <img class="edit-profile__icon" src="./image/edit_button.svg" alt="Редактировать профиль">
-                </button>
+                <p class="profile__job">Исследователь океана</p>
+                <button class="profile__edit-profile" type="button" ></button>
             </div>
 
-            <button class="add-button profile__add-button" type="button">
-                <img class="add-button__icon" src="./image/add_button.svg" alt="Добавить фотографию">
-            </button>
+            <button class="profile__add-button" type="button"></button>
         </section>
 
         <!-- Карточки с фотографиями -->
@@ -43,9 +39,7 @@
                 <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Карачаевск</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -53,9 +47,7 @@
                 <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -63,9 +55,7 @@
                 <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -73,9 +63,7 @@
                 <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -83,9 +71,7 @@
                 <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -93,9 +79,7 @@
                 <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Карачаево-Ч...</h2>
-                    <button class="like-photo element__like-photo" type="button" >
-                        <img class="like-photo__icon" src="./image/like.svg" alt="Поставить лайк на фото">
-                    </button>   
+                    <button class="like-photo element__like-photo" type="button" ></button>   
                 </div>
             </div>
         </section>
@@ -106,22 +90,23 @@
         <p class="footer__copyright"> &COPY; 2020. Мария Гончаренко</p>
     </footer>
 
-    <!-- Pop-up - редактировать профиль 
-    <div class="form">
-        <h2 class="form__title">Редактировать профиль</h2>
+    <!-- Pop-up - редактировать профиль -->
+    <div class="popup">
 
-        <form class="form__profail" action="" method="get" class="form__profail">
-            <p>
-              <input  class="form__name" type="text" name="name" id="name" required placeholder="Жак-Ив Кусто">
-            </p>
-            <p>
-              <input class="form__text" type="text" name="name" id="name" required placeholder="Исследователь океана">
-            </p>
-            <button class="form__button" type="submit">Сохранить</button>
-          </form>
--->
+        <div class="popup__container">
+        <button class="popup__close" type="button" ></button> 
+        <h2 class="popup__title">Редактировать профиль</h2>
+
+        <form class="popup__form" action="" method="get" id="form">
+              <input  class="popup__input popup__input_type_name" type="text" name="name" id="name" required placeholder="Имя">
+              <input class="popup__input popup__input_type_job" type="text" name="job" id="job" required placeholder="О себе">
+            <button class="popup__button-save" type="submit">Сохранить</button>
+        </form>
+        </div>
     </div>
+    
 
   </div>
+  <script src="./script.js/index.js"></script>
 </body>
 </html>

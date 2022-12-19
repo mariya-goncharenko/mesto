@@ -16,6 +16,6 @@
   }
 
   .element__like-photo:active {
-    background-image: url("../../..image/like_act.svg");
+    background-image: url("../../../image/like_act.svg");
     opacity: 1;
   }

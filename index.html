@@ -20,9 +20,7 @@
     <main>
         <!-- Информация о пользователе -->
         <section class="profile">
-            <div class="profile__avatar">
-                <img class="profile__avatar-img" src="./image/avatar.jpg" alt="Ваша фотография">
-            </div>
+            <img class="profile__avatar" src="./image/avatar.jpg" alt="Ваша фотография">
 
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -39,7 +37,7 @@
                 <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Карачаевск</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -47,7 +45,7 @@
                 <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -55,7 +53,7 @@
                 <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -63,7 +61,7 @@
                 <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -71,7 +69,7 @@
                 <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
 
@@ -79,7 +77,7 @@
                 <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
                 <div class="element__info">
                     <h2 class="element__title">Карачаево-Ч...</h2>
-                    <button class="like-photo element__like-photo" type="button" ></button>   
+                    <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
         </section>
@@ -97,7 +95,7 @@
         <button class="popup__close" type="button" ></button> 
         <h2 class="popup__title">Редактировать профиль</h2>
 
-        <form class="popup__form" method="get" id="form">
+        <form class="popup__form" method="get" id="form" name="popup-edit-profile">
               <input  class="popup__input popup__input_type_name" type="text" name="name" id="name" required placeholder="Имя">
               <input class="popup__input popup__input_type_job" type="text" name="job" id="job" required placeholder="О себе">
             <button class="popup__button-save" type="submit">Сохранить</button>

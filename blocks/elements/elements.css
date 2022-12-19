@@ -26,7 +26,7 @@
   
   @media screen and (max-width: 650px) {
     .elements {
-      padding: 0 calc((650px - 282px)/2) 0;
+      padding: 0 calc((650px - 285px) / 2) 0;
       grid-template-columns: repeat(1, 1fr);
       row-gap: 20px;
       column-gap: 0;
@@ -35,6 +35,6 @@
 
   @media screen and (max-width: 360px) {
     .elements {
-      padding: 0 calc((360px - 282px)/2) 0;
+      padding: 0 calc((365px - 282px)/2) 0;
     }
   }

@@ -1,6 +1,6 @@
 .elements {
     margin: 0;
-    padding: 0 calc((1280px - 880px)/2) ;
+    padding: 0 calc((1280px - 880px)/2);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fit, 1fr);

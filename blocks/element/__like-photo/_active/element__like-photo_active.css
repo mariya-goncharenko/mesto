@@ -1,0 +1,9 @@
+.element__like-photo_active {
+    background-image: url("../../../../image/like_act.svg");
+    display: block;
+    background-color: transparent;
+    border: none;
+    width: 22px;
+    height: 19px;
+    opacity: 1;
+  }

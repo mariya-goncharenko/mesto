@@ -32,55 +32,20 @@
         </section>
 
         <!-- Карточки с фотографиями -->
-        <section class="elements">
-            <div class="element">
-                <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button class="element__like-photo" type="button" ></button>   
-                </div>
-            </div>
+        <section class="elements"></section>
 
+        <!-- Template для карточки с фотографиями -->
+        <template id="element-template">
             <div class="element">
-                <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
+                <button class="element__delete-card" type="button" ></button>
+                <img class="element__img" src="#" alt="Фотографии мест, описаных в карточке">
                 <div class="element__info">
-                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <h2 class="element__title"></h2>
                     <button class="element__like-photo" type="button" ></button>   
                 </div>
             </div>
-
-            <div class="element">
-                <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__like-photo" type="button" ></button>   
-                </div>
-            </div>
-
-            <div class="element">
-                <img class="element__img" src="./image/elbrus.png" alt="Карачаевск">
-                <div class="element__info">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__like-photo" type="button" ></button>   
-                </div>
-            </div>
-
-            <div class="element">
-                <img class="element__img" src="./image/dombai.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__like-photo" type="button" ></button>   
-                </div>
-            </div>
-
-            <div class="element">
-                <img class="element__img" src="./image/karachaevsk.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <h2 class="element__title">Карачаево-Ч...</h2>
-                    <button class="element__like-photo" type="button" ></button>   
-                </div>
-            </div>
-        </section>
+        </template> 
+            
     </main>
 
     <!-- Подвал сайта -->
@@ -89,20 +54,43 @@
     </footer>
 
     <!-- Pop-up - редактировать профиль -->
-    <div class="popup">
+    <div class="popup popup_type_edit-profile">
 
         <div class="popup__container">
         <button class="popup__close" type="button" ></button> 
         <h2 class="popup__title">Редактировать профиль</h2>
 
-        <form class="popup__form" method="get" id="form" name="popup-edit-profile">
-              <input  class="popup__input popup__input_type_name" type="text" name="name" id="name" required placeholder="Имя">
-              <input class="popup__input popup__input_type_job" type="text" name="job" id="job" required placeholder="О себе">
+        <form class="popup__form" method="get" id="editForm" name="popup-edit-profile">
+              <input  class="popup__input popup__input_type_name" type="text" name="nameImput" id="nameImput" required placeholder="Имя">
+              <input class="popup__input popup__input_type_job" type="text" name="jobImput" id="jobImput" required placeholder="О себе">
             <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
         </div>
     </div>
+
+    <!-- Pop-up - добавление карточки -->
+    <div class="popup popup_type_add-card">
+
+        <div class="popup__container">
+        <button class="popup__close" type="button" ></button> 
+        <h2 class="popup__title">Новое место</h2>
+
+        <form class="popup__form" method="get" id="addForm" name="popup-add-card">
+              <input  class="popup__input popup__input_type_img" type="text" name="imgImput" id="imgImput" required placeholder="Название места">
+              <input class="popup__input popup__input_type_link" type="url" name="linkImput" id="linkImput" required placeholder="Ссылка на изображение">
+            <button class="popup__button-save" type="submit">Создать</button>
+        </form>
+        </div>
+    </div>
     
+    <!-- Pop-up - фото из карточек -->
+    <div class="popup popup_type_img">
+        <figure class="popup__img-container">
+            <button class="popup__close" type="button" ></button> 
+            <img class="popup__img" src="#" alt="Фотографии мест, описаных в карточке">
+            <figcaption class="popup__img-title"></figcaption>
+        </figure>
+    </div>
 
   </div>
   <script src="./script/index.js"></script>

@@ -11,7 +11,7 @@
     color: #000000;
   }
   .popup__input:last-of-type{
-    padding-top: 30px;
+    margin-top: 30px;
   }
   @media screen and (max-width: 650px) {
     .popup__input {

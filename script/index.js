@@ -1,28 +1,28 @@
 //Массив с карточками:
 const initialCards = [
     {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+      name: "Хайфа",
+      link: "https://images.unsplash.com/photo-1558447710-bc1bbd144ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
     {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+      name: "Мёртвое море",
+      link: "https://images.unsplash.com/photo-1478028336919-e8e8dcee1975?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
     {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+      name: "Яффо",
+      link: "https://images.unsplash.com/photo-1521450530321-12c602b95c67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
     {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+      name: "Тель-Авив",
+      link: "https://images.unsplash.com/photo-1544971621-cf3d7cfff894?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     },
     {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+      name: "Иерусалим",
+      link: "https://images.unsplash.com/photo-1574513828599-a4fefc82fe7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
     {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+      name: "Рош Ха-Никра",
+      link: "https://images.unsplash.com/photo-1506183915311-3c4749d0ac8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     },
   ]
 
@@ -46,7 +46,7 @@ const popupImg = document.querySelector(".popup_type_img");
 // Объявление констант для форм:
 const popupSave = document.querySelector(".popup__form");
 const formElement = document.querySelector(".popup__form");
-const formProfileNew = document.querySelector("#addForm");
+const formCardNew = document.querySelector("#addForm");
 
 // Объявление констант для кнопок:
 const buttoneEditProfile = document.querySelector(".profile__edit-profile");
@@ -103,6 +103,7 @@ function openPopup(popup) {
   formElement.addEventListener('submit', submitProfileForm);
 
 //Функции для POP-UP добавления карточек:
+
   buttoneAddCard.addEventListener("click", () => {
     openPopup(popupAddCard)
   })
@@ -165,10 +166,10 @@ function openPopup(popup) {
     const newCard = createCard({ name, link })
     if (newCard) renderCard(newCard, cardsSection)
     closePopup(popupAddCard)
-    formProfileNew.reset()
+    formCardNew.reset()
   }
   
-  formProfileNew.addEventListener("submit", submitCardForm)
+  formCardNew.addEventListener("submit", submitCardForm)
   
   
 //Функции для POP-UP картинки:  
@@ -183,14 +184,6 @@ function openPopup(popup) {
     popupImageTitle.textContent = cardTitle
     openPopup(popupImg)
   }
-
-
-
-
-    
-
-//buttoneEditProfile.addEventListener('click', openPopup);
-//buttoneCloseEdit.addEventListener('click', closePopup);
 
 
 

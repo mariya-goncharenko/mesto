@@ -8,4 +8,9 @@
     border-radius: 10px 10px 0 0;
     display: block;
     z-index: 2;
+    background-color: black;
+  }
+
+  .element__img:hover {
+    cursor: pointer;
   }

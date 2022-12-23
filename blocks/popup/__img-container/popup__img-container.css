@@ -1,11 +1,11 @@
 .popup__img-container {
     margin: 0;
     padding: 0;
-    max-width: 75vw; 
-    max-height: 75vh; 
-    position: relative; 
-    box-sizing: border-box; 
-    display: flex; 
-    flex-direction: column; 
-    opacity: 1; 
-} 
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+}

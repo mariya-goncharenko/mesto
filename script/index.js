@@ -93,7 +93,7 @@ function openPopup(popup) {
     image.alt = value.name
 
     image.addEventListener("click", () => {
-      openBigImage(card, value.link)
+      openBigImage(value)
     })
 
     deleteCard.addEventListener("click", () => {
@@ -101,7 +101,6 @@ function openPopup(popup) {
     })
 
     like.addEventListener("click", () => {
-      like.classList.toggle("element__like-photo");
       like.classList.toggle("element__like-photo_active");
     })
         
@@ -138,10 +137,9 @@ function openPopup(popup) {
     closePopup(popupImg)
   })
 
-  function openBigImage(name, link) {
-    const cardTitle = name.querySelector(".element__title").textContent
+  function openBigImage({name, link}) {
     popupImageImg.src = link
-    popupImageImg.alt = cardTitle
-    popupImageTitle.textContent = cardTitle
+    popupImageImg.alt = name
+    popupImageTitle.textContent = name
     openPopup(popupImg)
   }

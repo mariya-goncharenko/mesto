@@ -43,12 +43,21 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
 
 //Функция для открытия POP-UP:
 function openPopup(popup) {
-    popup.classList.add("popup_opened")
+    document.addEventListener("keydown", closePopupOnEscape);
+    popup.classList.add("popup_opened");
   }
   
 //Функция для закрытия POP-UP:
   function closePopup(popup) {
-    popup.classList.remove("popup_opened")
+    popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closePopupOnEscape);
+  }
+
+  function closePopupOnEscape(evt) {
+    if (evt.code == "Escape") {
+      const popup = document.querySelector(".popup_opened")
+      closePopup(popup)
+    }
   }
 
 //Функции для POP-UP изменения профиля:  

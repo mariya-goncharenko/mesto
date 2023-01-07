@@ -8,6 +8,8 @@
   <meta name="keywords" content="Место">
   <meta name="author" content="Мария Гончаренко">
   <link rel="stylesheet" href="./pages/index.css">
+  <script defer src="./script/validate.js"></script>
+  <script defer src="./script/validationConfig.js"></script>
   <script defer src="./script/initialCards.js"></script>
   <script defer src="./script/index.js"></script>
 </head>
@@ -63,10 +65,12 @@
         <h2 class="popup__title">Редактировать профиль</h2>
 
         <form class="popup__form" method="get" id="editForm" name="popup-edit-profile">
-            <input  class="popup__input popup__input_type_error popup__input_type_name" type="text" name="nameImput" id="nameImput" minlength="2" maxlength="40" required placeholder="Имя">
-            <span class="popup__input_error-name error">Ошибка</span>
-            <input class="popup__input popup__input_type_error popup__input_type_job" type="text" name="jobImput" id="jobImput" minlength="2" maxlength="200" required placeholder="О себе">
-            <span class="popup__input_error-job error">Ошибка</span>
+            <input  class="popup__input  popup__input_type_name" type="text" name="nameInput" id="nameInput" minlength="2" maxlength="40" required placeholder="Имя">
+            <span class="nameInput-error error"></span>
+
+            <input class="popup__input  popup__input_type_job" type="text" name="jobInput" id="jobInput" minlength="2" maxlength="200" required placeholder="О себе">
+            <span class="jobInput-error error"></span>    
+        
             <button class="popup__button-save popup__button-save_disabled" type="submit">Сохранить</button>
         </form>
         </div>
@@ -80,10 +84,12 @@
         <h2 class="popup__title">Новое место</h2>
 
         <form class="popup__form" method="get" id="addForm" name="popup-add-card">
-            <input  class="popup__input popup__input_type_error popup__input_type_img" type="text" name="imgImput" id="imgImput" required placeholder="Название места">
-            <span class="popup__input_error-img error">Ошибка</span>
-            <input class="popup__input popup__input_type_error popup__input_type_link" type="url" name="linkImput" id="linkImput" required placeholder="Ссылка на изображение">
-            <span class="popup__input_error-link error">Ошибка</span>  
+            <input  class="popup__input  popup__input_type_img" type="text" name="imgInput" id="imgInput" required minlength="2" maxlength="30"  placeholder="Название места">
+            <span class="imgInput-error error"></span>
+
+            <input class="popup__input  popup__input_type_link" type="url" name="linkInput" id="linkInput" required placeholder="Ссылка на изображение">
+            <span class="linkInput-error error"></span>      
+        
             <button class="popup__button-save popup__button-save_disabled" type="submit">Создать</button>
         </form>
         </div>

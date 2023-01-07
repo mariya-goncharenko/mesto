@@ -42,17 +42,13 @@ const popupImageImg = popupImg.querySelector(".popup__img")
 const popupImageTitle = popupImg.querySelector(".popup__img-title")
 
 //Функция для открытия POP-UP:
-function openPopup(popup) {
+  function openPopup(popup) {
+    popup.addEventListener("click", closePopupOnOverlay);
     document.addEventListener("keydown", closePopupOnEscape);
     popup.classList.add("popup_opened");
   }
   
 //Функция для закрытия POP-UP:
-  function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", closePopupOnEscape);
-  }
-
   function closePopupOnEscape(evt) {
     if (evt.code == "Escape") {
       const popup = document.querySelector(".popup_opened")
@@ -60,7 +56,20 @@ function openPopup(popup) {
     }
   }
 
-//Функции для POP-UP изменения профиля:  
+  function closePopupOnOverlay(evt) {
+    if (evt.currentTarget === evt.target) {
+      const popup = document.querySelector(".popup_opened")
+      closePopup(popup)
+    }   
+  }
+
+  function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closePopupOnEscape);
+    popup.removeEventListener("click", closePopupOnOverlay);
+  }
+
+//Функции для POP-UP изменения профиля:
   buttonEditProfile.addEventListener("click", () => {
     popupName.value = profileName.textContent
     popupJob.value = profileJob.textContent

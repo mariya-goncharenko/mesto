@@ -73,6 +73,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
   buttonEditProfile.addEventListener("click", () => {
     popupName.value = profileName.textContent
     popupJob.value = profileJob.textContent
+    disableSubmitButton(popupEditProfile, validationConfig)
     openPopup(popupEditProfile)
   })
   
@@ -92,6 +93,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
 //Функции для POP-UP добавления карточек:
 
   buttonAddCard.addEventListener("click", () => {
+    disableSubmitButton(popupAddCard, validationConfig)
     openPopup(popupAddCard)
   })
   
@@ -161,3 +163,5 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
     popupImageTitle.textContent = name
     openPopup(popupImg)
   }
+
+  enableValidation(validationConfig);

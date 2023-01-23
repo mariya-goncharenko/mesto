@@ -1,3 +1,7 @@
+import { Card } from './Card.js';
+//import { validationConfig } from './validationConfig.js';
+import { initialCards } from './initialCards.js';
+
 // Объявление констант для POP-UP изменения профиля:
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 
@@ -102,28 +106,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
   })
 
   function createCard(value) {
-    const card = cardElement.cloneNode(true)
-    const title = card.querySelector(".element__title") 
-    const image = card.querySelector(".element__img") 
-    const deleteCard = card.querySelector(".element__delete-card") 
-    const like = card.querySelector(".element__like-photo")
-
-    title.textContent = value.name
-    image.src = value.link
-    image.alt = value.name
-
-    image.addEventListener("click", () => {
-      openBigImage(value)
-    })
-
-    deleteCard.addEventListener("click", () => {
-      card.remove()
-    })
-
-    like.addEventListener("click", () => {
-      like.classList.toggle("element__like-photo_active");
-    })
-        
+    const card = new Card(value, "#element-template", openBigImage).generateCard();
     return card
     }
   
@@ -157,7 +140,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
     closePopup(popupImg)
   })
 
-  function openBigImage({name, link}) {
+  function openBigImage(name, link) {
     popupImageImg.src = link
     popupImageImg.alt = name
     popupImageTitle.textContent = name

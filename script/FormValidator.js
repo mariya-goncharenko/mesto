@@ -2,7 +2,6 @@ class FormValidator {
   constructor (formElement, validationConfig) {
     this._formElement = formElement
     this._validationConfig = validationConfig
-    this._buttonSave = this._formElement.querySelector(this._validationConfig.submitButtonSelector)
   }
 
   resetValidation() {
@@ -12,12 +11,6 @@ class FormValidator {
     });
    
   }
-
-  /*disableSubmitButton() {
-    this._buttonSave.classList.remove(this._validationConfig.activeButtonClass)
-    this._buttonSave.classList.add(this._validationConfig.inactiveButtonClass)
-    this._buttonSave.disabled = true
-  }*/  
     
   _showInputError = (inputElement) => {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);

@@ -1,6 +1,8 @@
+// Импорты
 import { Card } from './Card.js';
-//import { validationConfig } from './validationConfig.js';
 import { initialCards } from './initialCards.js';
+import { validationConfig } from './validationConfig.js';
+import { FormValidator } from './FormValidator.js';
 
 // Объявление констант для POP-UP изменения профиля:
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
@@ -38,12 +40,19 @@ const profileJob = document.querySelector(".profile__job");
 
 // Объявление констант для блока с карточками и POP-UP с картинкой:
 const cardsSection = document.querySelector(".elements")
-const template = document.querySelector("#element-template").content
+const template = document.querySelector(".element-template").content
 const cardElement = template.querySelector(".element")
 
 const popupImageOpen = popupImg.querySelector(".popup__img-container")
 const popupImageImg = popupImg.querySelector(".popup__img")
 const popupImageTitle = popupImg.querySelector(".popup__img-title")
+
+// Валидация форм
+const enableValidationEdit = new FormValidator(popupEditProfile, validationConfig);
+enableValidationEdit.enableValidation(popupEditProfile)
+
+const enableValidationAddCard = new FormValidator(popupAddCard, validationConfig);
+enableValidationAddCard.enableValidation(popupAddCard)
 
 //Функция для открытия POP-UP:
   function openPopup(popup) {
@@ -77,7 +86,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
   buttonEditProfile.addEventListener("click", () => {
     popupName.value = profileName.textContent
     popupJob.value = profileJob.textContent
-    disableSubmitButton(popupEditProfile, validationConfig)
+    enableValidationEdit._disableSubmitButton()
     openPopup(popupEditProfile)
   })
   
@@ -97,7 +106,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
 //Функции для POP-UP добавления карточек:
 
   buttonAddCard.addEventListener("click", () => {
-    disableSubmitButton(popupAddCard, validationConfig)
+    enableValidationAddCard._disableSubmitButton()
     openPopup(popupAddCard)
   })
   
@@ -106,7 +115,7 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
   })
 
   function createCard(value) {
-    const card = new Card(value, "#element-template", openBigImage).generateCard();
+    const card = new Card(value, ".element-template", openBigImage).generateCard();
     return card
     }
   
@@ -146,5 +155,3 @@ const popupImageTitle = popupImg.querySelector(".popup__img-title")
     popupImageTitle.textContent = name
     openPopup(popupImg)
   }
-
-  enableValidation(validationConfig);

@@ -8,3 +8,4 @@ const validationConfig = {
     errorClass: 'error'
   };
   
+  export {validationConfig}

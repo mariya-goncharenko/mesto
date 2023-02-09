@@ -36,14 +36,15 @@ const popupEditForm = new PopupWIthForm(".popup_type_edit-profile", submitProfil
 popupEditForm.setEventListeners()
 
 buttonEditProfile.addEventListener("click", () => {
-  popupName.value = userInfo.getUserInfo().user
-  popupJob.value = userInfo.getUserInfo().info
+  const {info, user} = userInfo.getUserInfo()
+  popupName.value = user
+  popupJob.value = info
   enableValidationEdit.resetValidation()
   popupEditForm.open()
 })
 
-function submitProfileForm(evt) {
-  userInfo.setUserInfo(evt.nameInput , evt.jobInput)
+function submitProfileForm(inputValues) {
+  userInfo.setUserInfo(inputValues.nameInput , inputValues.jobInput)
   popupEditForm.close()
 }
 
@@ -51,9 +52,9 @@ function submitProfileForm(evt) {
 const popupAddForm = new PopupWIthForm ( ".popup_type_add-card", submitCardForm );
 popupAddForm.setEventListeners()
 
-function submitCardForm(evt) {
-  const name = evt.imgInput
-  const link = evt.linkInput
+function submitCardForm(inputValues) {
+  const name = inputValues.imgInput
+  const link = inputValues.linkInput
   const newCard = createCard({ name, link })
   contentCards.addItem(newCard)
   popupAddForm.close()

@@ -17,7 +17,8 @@ import {popupName,
         buttonEditProfile,
         buttonAddCard,
         buttonEditAvatar,
-        formEditAvatar} from '../utils/constants.js'
+        formEditAvatar,
+        buttonSave} from '../utils/constants.js'
 
 // API:
 
@@ -91,10 +92,18 @@ buttonEditProfile.addEventListener("click", () => {
 })
 
 function submitProfileForm(inputValues) {
-  api.setEditUserInfo(inputValues)
   const {_id, avatar} =  userInfo.getUserInfo()
-  userInfo.setUserInfo(inputValues.nameInput , inputValues.jobInput, _id, avatar)
-  popupEditForm.close()
+  popupEditForm.renameButtonSave()
+  api.setEditUserInfo(inputValues).then(() => {
+    userInfo.setUserInfo(inputValues.nameInput , inputValues.jobInput, _id, avatar)
+  })
+
+  .catch((err) => {
+    console.log(err)})
+  
+  .finally(() => {
+    popupEditForm.close();
+  });
 }
 
 //Форма Avatar: 
@@ -108,9 +117,16 @@ buttonEditAvatar.addEventListener("click", () => {
 })
 
 function submitAvatarForm(inputValues) {
-  api.setEditAvatar(inputValues)
-  userInfo.setUserAvatar(inputValues.AvatarInput)
-  popupEditAvatarForm.close()
+  popupEditAvatarForm.renameButtonSave()
+  api.setEditAvatar(inputValues).then(() => {
+    userInfo.setUserAvatar(inputValues.AvatarInput)
+  })
+  .catch((err) => {
+    console.log(err)})
+
+  .finally(() => {
+    popupEditAvatarForm.close();
+  });
 }
 
 //Форма Add: 
@@ -120,14 +136,18 @@ popupAddForm.setEventListeners()
 function submitCardForm(inputValues) {
   const name = inputValues.imgInput
   const link = inputValues.linkInput
-
+  popupAddForm.renameButtonSave()
   api.setNewCard({ name, link }).then((cardData) => {
     const newCard = createCard(cardData)
     contentCards.addItem(newCard)
   })
+  
   .catch((err) => {
-    console.log(err)});
-  popupAddForm.close()
+    console.log(err)})
+
+  .finally(() => {
+    popupAddForm.close();
+  });
 }
 
 buttonAddCard.addEventListener("click", () => {

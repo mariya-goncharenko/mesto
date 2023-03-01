@@ -1,8 +1,5 @@
-import {api} from "../pages/index.js";
-import {popupDeleteCard} from "../pages/index.js";
-
 class Card {
-    constructor(data, user, templateSelector, clickImageHandle) {
+    constructor(data, user, templateSelector, clickImageHandle, deleteCard, likeCard, dislikeCard) {
       this._name = data.name
       this._link = data.link
       this._likeNumber = data.likes
@@ -11,6 +8,9 @@ class Card {
       this._cardId = data._id
       this._templateSelector = templateSelector
       this._clickImageHandle = clickImageHandle
+      this._deleteCard = deleteCard
+      this._likeCard = likeCard
+      this._dislikeCard = dislikeCard
     }
 
     generateCard = () => {
@@ -27,27 +27,24 @@ class Card {
       return this._cardElement
     }
   
-    _likeCard = () => {
+    _addLikeCard = () => {
       this._like.classList.add("element__like-photo_active");
-      
-      api.addLike(this._cardId).then((cardData) => {
-        console.log(cardData)
-        this._likeNumberElement.textContent = cardData.likes.length;
-        this._likeNumber = cardData.likes;
-      })
-      .catch((err) => {
-        console.log(err)});
+      this._likeCard(this, this._cardId)
     }
 
-    _dislikeCard = () => {
+    likeElement(cardData) {
+      this._likeNumberElement.textContent = cardData.likes.length;
+      this._likeNumber = cardData.likes;
+    }
+
+    _removeLikeCard = () => {
       this._like.classList.remove("element__like-photo_active");
-      api.deleeteLike(this._cardId).then((cardData) => {
-        console.log(cardData)
-        this._likeNumberElement.textContent = cardData.likes.length;
-        this._likeNumber = cardData.likes;
-      })
-      .catch((err) => {
-        console.log(err)});
+      this._dislikeCard(this, this._cardId)
+    }
+
+    dislikeElement(cardData) {
+      this._likeNumberElement.textContent = cardData.likes.length; 
+      this._likeNumber = cardData.likes;
     }
 
     _isLike = () => {return this._likeNumber.find((elementId) => elementId._id === this._userId)}
@@ -61,27 +58,19 @@ class Card {
 
     _likeCardForUser () {
        if (this._isLike()) { 
-        this._dislikeCard()
+        this._removeLikeCard()
       } else {
-        this._likeCard()
+        this._addLikeCard()
       } 
     }
 
-    
-    _deleteCard = () => {
-      popupDeleteCard.open(() => {
-        api.deleeteCardMetod(this._cardId).then((cardData) => {
-          console.log(cardData)
-          this._delete.closest(".element").remove();
-          popupDeleteCard.close();
-        })
-        .catch((err) => {
-          console.log(err)});
-      })
+    deleteCardElement(){
+      this._delete.closest(".element").remove();
     }
   
     _setEventHandlers = () => {
-      this._delete.addEventListener("click", () => this._deleteCard())
+      this._delete.addEventListener("click", () => 
+      this._deleteCard(this, this._cardId))
       this._like.addEventListener("click", () => this._likeCardForUser())
       this._image.addEventListener("click", () =>
         this._clickImageHandle(this._name, this._link)

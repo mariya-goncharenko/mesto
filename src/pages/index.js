@@ -19,6 +19,7 @@ import {popupName,
         buttonEditAvatar,
         formEditAvatar,
         buttonSave} from '../utils/constants.js'
+import { data } from 'jquery';
 
 // API:
 
@@ -33,14 +34,14 @@ const api = new Api({
 export {api}
 
 // Валидация форм
-const enableValidationEdit = new FormValidator(formEditProfile, validationConfig);
-enableValidationEdit.enableValidation(formEditProfile)
+const formProfileValidator = new FormValidator(formEditProfile, validationConfig);
+formProfileValidator.enableValidation()
 
-const enableValidationAddCard = new FormValidator(formCardNew, validationConfig);
-enableValidationAddCard.enableValidation(formCardNew)
+const formAddCardValidator = new FormValidator(formCardNew, validationConfig);
+formAddCardValidator.enableValidation()
 
-const enableValidationEditAvatar= new FormValidator(formEditAvatar, validationConfig);
-enableValidationEditAvatar.enableValidation(formEditAvatar)
+const formAvatarValidator= new FormValidator(formEditAvatar, validationConfig);
+formAvatarValidator.enableValidation()
 
 //Новая секция:
 let contentCards 
@@ -87,7 +88,7 @@ buttonEditProfile.addEventListener("click", () => {
   const {info, user} = userInfo.getUserInfo()
   popupName.value = user
   popupJob.value = info
-  enableValidationEdit.resetValidation()
+  formProfileValidator.resetValidation()
   popupEditForm.open()
 })
 
@@ -112,7 +113,7 @@ const popupEditAvatarForm = new PopupWIthForm(".popup_type_edit-avatar", submitA
 popupEditAvatarForm.setEventListeners()
 
 buttonEditAvatar.addEventListener("click", () => {
-  enableValidationEditAvatar.resetValidation()
+  formAvatarValidator.resetValidation()
   popupEditAvatarForm.open()
 })
 
@@ -151,16 +152,51 @@ function submitCardForm(inputValues) {
 }
 
 buttonAddCard.addEventListener("click", () => {
-  enableValidationAddCard.resetValidation()
+  formAddCardValidator.resetValidation()
   popupAddForm.open()
 })
 
 // Отрисовка карточек:
 
 function createCard(value) {
-  const card = new Card(value, userInfo.getUserInfo(), ".element-template", handleCardClick).generateCard();
+  const card = new Card(value, userInfo.getUserInfo(), ".element-template", handleCardClick, deleteCard, likeCard, dislikeCard).generateCard();
   return card
 }
+
+// Удаление карточки:
+function deleteCard(card, _id){
+      popupDeleteCard.open(() => {
+        api.deleeteCardMetod(_id).then(() => {
+          //console.log(cardData)
+          card.deleteCardElement()
+          popupDeleteCard.close();
+        })
+        .catch((err) => {
+          console.log(err)});
+      })
+    }
+
+//Лайк карточки:
+
+function likeCard(card,_id){
+   api.addLike(_id).then((cardData) => {
+        //console.log(cardData)
+        card.likeElement(cardData)
+      })
+      .catch((err) => {
+        console.log(err)});
+}
+
+//Дизлайк карточки:
+function dislikeCard(card,_id){
+  api.deleeteLike(_id).then((cardData) => {
+       //console.log(cardData)
+       card.dislikeElement(cardData)
+     })
+     .catch((err) => {
+       console.log(err)});
+}
+
 
 // Открытие большой картинки:
 function handleCardClick (name,link) {

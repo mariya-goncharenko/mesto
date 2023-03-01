@@ -2,6 +2,8 @@ class FormValidator {
   constructor (formElement, validationConfig) {
     this._formElement = formElement
     this._validationConfig = validationConfig
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
   }
 
   resetValidation() {
@@ -52,13 +54,11 @@ class FormValidator {
   };
 
   _setEventListeners() {
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
-    this._buttonElement = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
-    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input',() => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._inputList, this._buttonElement, this._validationConfig);
+        this._toggleButtonState();
       });
     });
   };

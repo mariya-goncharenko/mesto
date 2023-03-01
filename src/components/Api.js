@@ -2,19 +2,20 @@ export default class Api {
   constructor(options) {
     this._options = options
   }
+
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+} 
+
   //Метод для информации о пользователе:
   getUserInfo() {
     return fetch( this._options.baseUrl + "/users/me", {
      headers: this._options.headers
   })
-
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-    // если ошибка, отклоняем промис
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  .then(res => this._getResponseData(res));
 }
 
 //Метод для подключения к массиву карточек:
@@ -22,13 +23,7 @@ export default class Api {
     return fetch( this._options.baseUrl + "/cards", {
       headers: this._options.headers
    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+   .then(res => this._getResponseData(res));
   }
 
 // Метод для сохранения данных о пользователе:
@@ -40,15 +35,8 @@ export default class Api {
     name: data.nameInput,
     about: data.jobInput
   })
-  
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-    // если ошибка, отклоняем промис
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  .then(res => this._getResponseData(res));
   }
 
   // Метод для добавления новой карточки на сервер:
@@ -60,15 +48,8 @@ export default class Api {
       name: data.name,
       link: data.link
     })
-    
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(res => this._getResponseData(res));
   }
 
   //Метод для постановки лайков:
@@ -77,13 +58,7 @@ export default class Api {
     method: 'PUT',
     headers: this._options.headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(res => this._getResponseData(res));
   }
 
   //Метод для снятия лайков:
@@ -92,13 +67,7 @@ export default class Api {
     method: 'DELETE',
     headers: this._options.headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(res => this._getResponseData(res));
   }
 
   //Метод для удаления карточки:
@@ -107,13 +76,7 @@ export default class Api {
     method: 'DELETE',
     headers: this._options.headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(res => this._getResponseData(res));
   }
 
   //Метод для изменения аватара:
@@ -126,13 +89,6 @@ export default class Api {
     })
     
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(res => this._getResponseData(res));
     }
-  
 }

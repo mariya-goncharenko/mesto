@@ -7,24 +7,25 @@
   <meta name="description" content="Учебный проект от Яндекс.Практикум">
   <meta name="keywords" content="Место">
   <meta name="author" content="Мария Гончаренко">
-  
 </head>
 <body class="root">
   <div class="page">
     <!-- Шапка сайта -->
     <header class="header">
         <img class="header__logo" src="<%=require('./image/logo.svg')%>" alt="Логотип Место">
-        
     </header>
     <!-- Основной блок сайта -->
     <main>
         <!-- Информация о пользователе -->
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./image/avatar.jpg')%>" alt="Ваша фотография">
+            <div class="profile__avatar-container">
+              <button class="profile__edit-avatar" type="button" aria-label="Изменить аватар"></button> 
+              <img class="profile__avatar" src="" alt="Ваша фотография">
+            </div>    
 
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__job">Исследователь океана</p>
+                <h1 class="profile__name"></h1>
+                <p class="profile__job"></p>
                 <button class="profile__edit-profile" type="button" aria-label="Изменить данные профиля"></button>
             </div>
 
@@ -37,11 +38,15 @@
         <!-- Template для карточки с фотографиями -->
         <template class="element-template" id="element-template">
             <div class="element">
-                <button class="element__delete-card" type="button" aria-label="Удалить"></button>
+                <button class="element__delete-card" id="element__delete-card" type="button" aria-label="Удалить"></button>
                 <img class="element__img" src="#" alt="Фотографии мест, описаных в карточке">
                 <div class="element__info">
                     <h2 class="element__title"></h2>
-                    <button class="element__like-photo" type="button" aria-label="Нравится"></button>   
+                    <div class="element__like-container">
+                    <button class="element__like-photo" type="button" aria-label="Нравится"></button>
+                    <p class="element__like-number"></p>    
+                    </div>
+                       
                 </div>
             </div>
         </template> 
@@ -74,6 +79,24 @@
         </div>
     </div>
 
+    <!-- Pop-up - редактировать аватар -->
+    <div class="popup popup_type_edit-avatar">
+
+        <div class="popup__container">
+        <button class="popup__close" type="button" aria-label="Закрыть"></button> 
+        <h2 class="popup__title">Изменить аватар</h2>
+
+        <form class="popup__form" method="get" id="editAvatar" name="popup-edit-avatar"> 
+            <div class="popup__label">
+                <input class="popup__input  popup__input_type_avatar" type="url" name="AvatarInput" id="linkInput" required placeholder="Ссылка на новый аватар">
+                <span class="linkInput-error error"></span>
+            </div>
+            <button class="popup__button-save popup__button-save_disabled" type="submit">Сохранить</button>
+        </form>
+        </div>
+    </div>
+
+
     <!-- Pop-up - добавление карточки -->
     <div class="popup popup_type_add-card">
 
@@ -102,6 +125,15 @@
             <img class="popup__img" src="#" alt="Фотографии мест, описаных в карточке">
             <figcaption class="popup__img-title"></figcaption>
         </figure>
+    </div>
+
+    <!-- Pop-up - удалить -->
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+        <button class="popup__close" type="button" aria-label="Закрыть"></button> 
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__button-save popup__button-save_type_close" type="submit">Да</button>
+        </div>
     </div>
 
   </div>

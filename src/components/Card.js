@@ -28,21 +28,21 @@ class Card {
     }
   
     _addLikeCard = () => {
-      this._like.classList.add("element__like-photo_active");
       this._likeCard(this, this._cardId)
     }
 
     likeElement(cardData) {
       this._likeNumberElement.textContent = cardData.likes.length;
       this._likeNumber = cardData.likes;
+      this._like.classList.add("element__like-photo_active");
     }
 
     _removeLikeCard = () => {
-      this._like.classList.remove("element__like-photo_active");
       this._dislikeCard(this, this._cardId)
     }
 
     dislikeElement(cardData) {
+      this._like.classList.remove("element__like-photo_active");
       this._likeNumberElement.textContent = cardData.likes.length; 
       this._likeNumber = cardData.likes;
     }

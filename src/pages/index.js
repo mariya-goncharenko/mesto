@@ -17,9 +17,7 @@ import {popupName,
         buttonEditProfile,
         buttonAddCard,
         buttonEditAvatar,
-        formEditAvatar,
-        buttonSave} from '../utils/constants.js'
-import { data } from 'jquery';
+        formEditAvatar} from '../utils/constants.js';
 
 // API:
 
